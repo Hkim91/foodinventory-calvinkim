@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Listing of Sales";
+}
+<div class="row">
+    <div class="col-sm-12">
+        <h2>@Html.Raw(ViewBag.Title)</h2>
+        <p>
+            A list of sales is displayed below.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table id="tblListingOfSales" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Sale ID</th>
+                    <th>Sale Date</th>
+                    <th>Product Purchased</th>
+                    <th>Quantity Bought</th>
+                    <th>Discount</th>
+                    <th>Payment Type</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+@section scripts {
+    <script type="text/javascript">
+    if (typeof (FoodInventory) === 'undefined' || FoodInventory === null) {
+        var FoodInventory = {};
+    }
+
+    FoodInventory.ProductsAPIURL = '@HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~/")api/Product';
+    FoodInventory.SalesAPIURL = '@HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~/")api/Sale';
+    FoodInventory.SalesAddEditFormURL = '@Url.Action("AddEditSale", "Home")';
+    </script>
+    @Scripts.Render("~/bundles/sales")
+}

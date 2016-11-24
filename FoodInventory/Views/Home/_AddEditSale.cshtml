@@ -1,0 +1,34 @@
+﻿@{
+    List<SelectListItem> paymentTypes = new List<SelectListItem>();
+    paymentTypes.Add(new SelectListItem { Text = "Credit", Value = "Credit" });
+    paymentTypes.Add(new SelectListItem { Text = "Debit", Value = "Debit" });
+    paymentTypes.Add(new SelectListItem { Text = "Cash", Value = "Cash" });
+    paymentTypes.Add(new SelectListItem { Text = "Check", Value = "Check" });
+}
+<form id="frmAddEditSale">
+    <div class="form-group">
+        <label for="txtSaleDate">Sale Date</label>
+        <input type="text" placeholder="Click to select or type a date that this sale was conducted." id="txtSaleDate" name="txtSaleDate" class="form-control date-picker" />
+        <small id="txtSaleDateHelp" class="form-text text-muted">Click to select or type a date that this sale was conducted.</small>
+    </div>
+    <div class="form-group">
+        <label for="txtSaleProductName">Product Name</label>
+        <input type="text" placeholder="Type in the name of the product here." maxlength="50" required id="txtSaleProductName" name="txtSaleProductName" class="form-control" />
+        <small id="txtSaleProductNameHelp" class="form-text text-muted">Type in the name of the product you are adding here.</small>
+    </div>
+    <div class="form-group">
+        <label for="txtSaleQuantityBought">Quantity Bought</label>
+        <input type="text" placeholder="Type in the quantity of the product bought here." required id="txtSaleQuantityBought" name="txtSaleQuantityBought" class="form-control" />
+        <small id="txtSaleQuantityBoughtHelp" class="form-text text-muted">Type in the quantity of the product bought here. Note that this field should be an integer.</small>
+    </div>
+    <div class="form-group">
+        <label for="txtSaleDiscount">Discount</label>
+        <input type="text" placeholder="Type in the amount discounted here." id="txtSaleDiscount" name="txtSaleDiscount" class="form-control" />
+        <small id="txtSaleDiscountHelp" class="form-text text-muted">Type in the amount discounted. Note that this field should be an amount in US dollars and is not required.</small>
+    </div>
+    <div class="form-group">
+        <label for="txtSalePaymentType">Units Available</label>
+        @Html.DropDownList("txtSalePaymentType", new SelectList(paymentTypes, "Value", "Text"))
+        <small id="txtSaleUnitsAvailableHelp" class="form-text text-muted">Select the type of payment used for this sale.</small>
+    </div>
+</form>
